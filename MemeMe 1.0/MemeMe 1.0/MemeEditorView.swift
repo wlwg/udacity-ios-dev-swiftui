@@ -1,5 +1,5 @@
 //
-//  MemeViewer.swift
+//  MemeEditorView.swift
 //  MemeMe 1.0
 //
 //  Created by Will Wang on 2020-07-10.
@@ -94,7 +94,7 @@ struct MemeEditor: View {
 /*
  Use UIViewController as a bridge for taking screenshot due to some functionality limitation in SwiftUI.
  */
-struct MemeViewerRepresentation: UIViewControllerRepresentable {
+struct MemeEditorView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> UIHostingController<MemeEditor> {
         return UIHostingController(rootView: MemeEditor())
     }
@@ -106,6 +106,6 @@ struct MemeViewerRepresentation: UIViewControllerRepresentable {
 
 struct MemeViewer_Previews: PreviewProvider {
     static var previews: some View {
-        MemeEditor()
+        MemeEditorView()
     }
 }
