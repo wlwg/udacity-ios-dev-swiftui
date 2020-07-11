@@ -308,7 +308,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.MemeMe1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.MemeMe-1-0";
 				PRODUCT_NAME = "MemeMe 1.0";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -327,7 +327,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.udacity.MemeMe1;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.udacity.MemeMe-1-0";
 				PRODUCT_NAME = "MemeMe 1.0";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";

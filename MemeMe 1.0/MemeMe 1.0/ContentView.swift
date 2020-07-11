@@ -29,7 +29,7 @@ struct ContentView: View {
     var body: some View {
         NavigationView {
             VStack {
-                MemeViewer(image: self.$image)
+                MemeViewerRepresentation(image: self.$image)
                 HStack {
                     Spacer()
                     Button(action: {
@@ -40,6 +40,8 @@ struct ContentView: View {
                     }
                     .disabled(!UIImagePickerController.isSourceTypeAvailable(.camera))
                     
+                    Spacer()
+                    Divider().frame(height: 30)
                     Spacer()
                     
                     Button(action: {
@@ -56,7 +58,7 @@ struct ContentView: View {
                 .background(Color.white)
                 .opacity(0.7)
             }
-            .navigationBarTitle("Meme", displayMode: .inline)
+            .navigationBarTitle("MemeMe", displayMode: .inline)
             .navigationBarItems(
                 trailing: Button(action: {
                     

@@ -92,6 +92,22 @@ struct MemeViewer: View {
     }
 }
 
+
+/*
+ Use UIViewController as a bridge for taking screenshot due to some functionality limitation in SwiftUI.
+ */
+struct MemeViewerRepresentation: UIViewControllerRepresentable {
+    @Binding var image: Image?
+    
+    func makeUIViewController(context: Context) -> UIHostingController<MemeViewer> {
+        return UIHostingController(rootView: MemeViewer(image: self.$image))
+    }
+
+    func updateUIViewController(_ uiViewController: UIHostingController<MemeViewer>, context: Context) {
+    }
+}
+
+
 struct MemeViewer_Previews: PreviewProvider {
     static var previews: some View {
         MemeViewer(image: .constant(nil))
