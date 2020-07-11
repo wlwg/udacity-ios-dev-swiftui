@@ -79,7 +79,7 @@ struct ImagePickerView: View {
             .disabled(!UIImagePickerController.isSourceTypeAvailable(.camera))
             
             Spacer()
-            Divider().frame(height: 30)
+            Divider().frame(height:20)
             Spacer()
             
             Button(action: {
@@ -92,7 +92,6 @@ struct ImagePickerView: View {
 
             Spacer()
         }
-        .padding()
         .background(Color.white)
         .opacity(0.7)
         .sheet(isPresented: $showImagePicker) {
@@ -129,7 +128,6 @@ struct ImagePickerView: View {
     }
     
     func openPhotoLibrary() {
-        print(UIImagePickerController.isSourceTypeAvailable(self.imageSource))
         switch PHPhotoLibrary.authorizationStatus()
         {
             case .authorized:

@@ -4,10 +4,9 @@
 //
 //  Created by Will Wang on 2020-07-10.
 //  Copyright © 2020 Udacity. All rights reserved.
-//
-//  Reference: https://stackoverflow.com/questions/56491881/move-textfield-up-when-the-keyboard-has-appeared-in-swiftui
 
 import SwiftUI
+
 
 final class KeyboardResponder: ObservableObject {
     @Published private(set) var keyboardHeight: CGFloat = 0

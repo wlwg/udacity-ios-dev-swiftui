@@ -9,78 +9,108 @@
 import SwiftUI
 import AVFoundation
 import Photos
+import Combine
 
-struct MemeEditor: View {
+struct MemeEditorView: View {
     @EnvironmentObject var meme: MemeModel
-    @State private var editingTopText: Bool = false
-    @State private var editingBottomText: Bool = false
-    
     @ObservedObject private var keyboard = KeyboardResponder()
 
+    @State private var topText: String = ""
+    @State private var bottomText: String = ""
+    @State private var editingTopText: Bool = false
+    @State private var editingBottomText: Bool = false
+
+    private struct Style {
+        static let bottomBarHeight: Int = 40
+        static let bottomTextPaddingBottom: Int = 20
+        static let topTextPaddingTop: Int = 20
+        static let textFontSize = 40
+    }
+
     var body: some View {
-        ZStack {
-            Rectangle()
+        VStack {
+            ZStack {
+                Rectangle()
 
-            if meme.image != nil {
-                meme.image!
-                    .resizable()
-                    .scaledToFit()
-                    .animation(.easeIn(duration: 0.2))
-            }
+                if meme.image != nil {
+                    meme.image!
+                        .resizable()
+                        .scaledToFit()
+                        .animation(.easeIn(duration: 0.2))
+                } else {
+                    Text("No image selected.").foregroundColor(.white)
+                }
 
-            VStack {
-                ZStack {
-                    if !editingTopText {
-                        Text(meme.topText.isEmpty ? "TOP" : meme.topText)
+                VStack {
+                    ZStack {
+                        if !editingTopText {
+                            Text(meme.topText.isEmpty ? "TOP" : meme.topText)
+                                .font(
+                                    Font.custom("HelveticaNeue-CondensedBlack", size: CGFloat(Style.textFontSize))
+                                )
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .shadow(color: .black, radius: 2)
+                        }
+        
+                        TextField("", text: $topText, onEditingChanged: { (editing) in
+                            self.editingTopText = editing
+                            self.keyboard.active = false
+                        }) {
+                            self.editingTopText = false
+                            self.meme.topText = self.topText
+                        }
+                            .shadow(color: .black, radius: 2)
+                            .frame(height: 50)
                             .font(
-                                Font.custom("HelveticaNeue-CondensedBlack", size: 40)
-                                
+                                Font.custom("HelveticaNeue-CondensedBlack", size: CGFloat(Style.textFontSize))
                             )
-                            .foregroundColor(.white)
+                            .autocapitalization(.allCharacters)
                             .multilineTextAlignment(.center)
-                    }
-    
-                    TextField("", text: $meme.topText, onEditingChanged: { (editing) in
-                        self.editingTopText = editing
-                        self.keyboard.active = false
-                    }) {
-                        self.editingTopText = false
-                    }.frame(height: 40)
-                        .font(Font.custom("HelveticaNeue-CondensedBlack", size: 40))
-                        .autocapitalization(.allCharacters)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(editingTopText ? .white : .clear)
-                        .background(Color.clear)
-                        .padding()
-                }.padding(.top, 50)
+                            .foregroundColor(editingTopText ? .white : .clear)
+                            .background(Color.clear)
+                            .padding()
+                    }.padding(.top, CGFloat(Style.topTextPaddingTop))
 
-                Spacer()
+                    Spacer()
 
-                ZStack {
-                    if !editingBottomText {
-                        Text(meme.bottomText.isEmpty ? "BOTTOM" :  meme.bottomText)
-                            .font(Font.custom("HelveticaNeue-CondensedBlack", size: 40))
-                            .foregroundColor(.white)
+                    ZStack {
+                        if !editingBottomText {
+                            Text(meme.bottomText.isEmpty ? "BOTTOM" :  meme.bottomText)
+                                .font(Font.custom("HelveticaNeue-CondensedBlack", size: CGFloat(Style.textFontSize)))
+                                .foregroundColor(.white)
+                                .multilineTextAlignment(.center)
+                                .shadow(color: .black, radius: 2)
+                        }
+
+                        TextField("", text: $bottomText, onEditingChanged: { (editing) in
+                            self.editingBottomText = editing
+                            self.keyboard.active = true
+                        }) {
+                            self.editingBottomText = false
+                            self.meme.bottomText = self.bottomText
+                        }
+                            .shadow(color: .black, radius: 2)
+                            .frame(height: 50)
+                            .font(Font.custom("HelveticaNeue-CondensedBlack", size: CGFloat(Style.textFontSize)))
+                            .autocapitalization(.allCharacters)
                             .multilineTextAlignment(.center)
-                    }
-
-                    TextField("", text: $meme.bottomText, onEditingChanged: { (editing) in
-                        self.editingBottomText = editing
-                        self.keyboard.active = true
-                    }) {
-                        self.editingBottomText = false
-                    }
-                        .font(Font.custom("HelveticaNeue-CondensedBlack", size: 40))
-                        .autocapitalization(.allCharacters)
-                        .multilineTextAlignment(.center)
-                        .foregroundColor(editingBottomText ? .white : .clear)
-                        .background(Color.clear)
-                        .padding()
-                }.padding(.bottom, 50)
+                            .foregroundColor(editingBottomText ? .white : .clear)
+                            .background(Color.clear)
+                            .padding()
+                    }.padding(.bottom, CGFloat(Style.bottomTextPaddingBottom))
+                }
             }
+            .animation(.easeOut(duration: 0.2))
+            
+            ImagePickerView()
+                .frame(height: CGFloat(Style.bottomBarHeight), alignment: .center)
         }
-        .offset(y: -keyboard.keyboardHeight)
-        .animation(.easeOut(duration: 0.2))
+        .offset(
+            y: keyboard.keyboardHeight > 0
+                ? -keyboard.keyboardHeight + CGFloat(Style.bottomBarHeight) + CGFloat(Style.bottomTextPaddingBottom)
+                : 0
+        )
     }
 
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -89,20 +119,6 @@ struct MemeEditor: View {
         return keyboardSize.cgRectValue.height
     }
 }
-
-
-/*
- Use UIViewController as a bridge for taking screenshot due to some functionality limitation in SwiftUI.
- */
-struct MemeEditorView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIHostingController<MemeEditor> {
-        return UIHostingController(rootView: MemeEditor())
-    }
-
-    func updateUIViewController(_ uiViewController: UIHostingController<MemeEditor>, context: Context) {
-    }
-}
-
 
 struct MemeViewer_Previews: PreviewProvider {
     static var previews: some View {

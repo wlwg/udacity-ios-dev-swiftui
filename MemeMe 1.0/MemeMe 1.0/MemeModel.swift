@@ -12,5 +12,5 @@ class MemeModel: ObservableObject {
     @Published var topText: String = ""
     @Published var bottomText: String = ""
     @Published var image: Image?
-    @Published var memedImage: Image?
+    @Published var memedImage: UIImage? // Use UIImage type only because sharing using UIActivityViewController requires such type.
 }
