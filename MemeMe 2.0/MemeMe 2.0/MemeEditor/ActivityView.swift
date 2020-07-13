@@ -12,9 +12,16 @@ import SwiftUI
 struct ActivityView: UIViewControllerRepresentable {
     var activityItems: [Any]
     var applicationActivities: [UIActivity]? = nil
+    let onShared: () -> Void
 
     func makeUIViewController(context: UIViewControllerRepresentableContext<ActivityView>) -> UIActivityViewController {
         let viewController = UIActivityViewController(activityItems: activityItems, applicationActivities: applicationActivities)
+        viewController.completionWithItemsHandler = {
+            (activity, success, items, error) in
+            if success {
+                self.onShared()
+            }
+        }
         viewController.modalPresentationStyle = .popover
         return viewController
     }

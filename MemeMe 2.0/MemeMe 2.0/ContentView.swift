@@ -9,16 +9,43 @@
 import SwiftUI
 
 struct ContentView: View {
+    @EnvironmentObject var appState: AppState
+    
     @State private var showEditor: Bool = false
     @State private var meme: MemeModel = MemeModel()
     
     var body: some View {
         ZStack {
             NavigationView {
-                Text("Hello, World!")
+                TabView {
+                    VStack {
+                        if appState.memes.count > 0 {
+                            MemeListView(onClickMeme: self.editMeme)
+                                .padding()
+                        } else {
+                            Text("No Memes available.")
+                        }
+                    }.tabItem {
+                        Image("table")
+                            .scaledToFit()
+                    }
+                    
+                    VStack {
+                        if appState.memes.count > 0 {
+                            MemeCollectionView(onClickMeme: self.editMeme)
+                                .padding()
+                        } else {
+                            Text("No Memes available.")
+                        }
+                    }.tabItem {
+                        Image("collection")
+                            .scaledToFit()
+                    }
+                }
                     .navigationBarTitle("Sent Memes", displayMode: .inline)
                     .navigationBarItems(trailing:
                         Button(action: {
+                            self.meme = MemeModel()
                             self.showEditor = true
                         }) {
                             Image(systemName: "plus")
@@ -30,12 +57,29 @@ struct ContentView: View {
                     meme: self.$meme,
                     onDismiss: {
                         self.showEditor = false
-                    }
+                    },
+                    onShared: self.addMeme
                 )
                 .transition(.move(edge: .bottom))
                 .animation(.easeInOut(duration:0.5))
             }
         }
+    }
+    
+    func addMeme() {
+        if meme.id == nil {
+            meme.id = UUID().uuidString
+            appState.memes.append(meme)
+            return
+        } else {
+            appState.memes.removeAll(where: { $0.id == meme.id })
+            appState.memes.append(meme)
+        }
+    }
+    
+    func editMeme(meme: MemeModel) {
+        self.meme = meme
+        self.showEditor = true
     }
 }
 

@@ -14,6 +14,7 @@ import Combine
 struct MemeEditorViewInternal: View {
     let generateMemedImage: () -> UIImage
     let onDismiss: () -> Void
+    let onShared: () -> Void
     @Binding var meme: MemeModel
 
     @ObservedObject private var keyboard = KeyboardResponder()
@@ -113,10 +114,11 @@ struct MemeEditorViewInternal: View {
                     ? -keyboard.keyboardHeight + CGFloat(Style.bottomBarHeight) + CGFloat(Style.bottomTextPaddingBottom)
                     : 0
             )
-            .navigationBarTitle("Meme Editor", displayMode: .inline)
+            .navigationBarTitle("Edit Meme", displayMode: .inline)
             .navigationBarItems(
                 leading: Button(action: {
                     self.memedImage = self.generateMemedImage()
+                    self.meme.memedImage = Image(uiImage: self.memedImage!)
                     self.showShare = true
                 }){
                     Image(systemName: "square.and.arrow.up")
@@ -127,7 +129,10 @@ struct MemeEditorViewInternal: View {
             )
         }
         .sheet(isPresented: $showShare) {
-            ActivityView(activityItems: [self.memedImage!])
+            ActivityView(
+                activityItems: [self.memedImage!],
+                onShared: self.onShared
+            )
         }
     }
 
@@ -143,20 +148,9 @@ struct MemeEditorViewInternal: View {
  Use UIViewController as a bridge for taking screenshot due to some functionality limitation in SwiftUI.
  */
 class MemeEditorViewController: UIViewController {
-    var meme: Binding<MemeModel>
-    let onDismiss: () -> Void
-    
-    init(meme: Binding<MemeModel>, onDismiss: @escaping () -> Void) {
-        self.meme = meme
-        self.onDismiss = onDismiss
-        super.init(nibName: nil, bundle: nil)
-    }
-    
-    required init?(coder: NSCoder) {
-        self.meme = .constant(MemeModel())
-        self.onDismiss = {}
-        super.init(coder: coder)
-    }
+    var meme: Binding<MemeModel> = .constant(MemeModel())
+    var onDismiss: () -> Void = {}
+    var onShared: () -> Void = {}
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -168,6 +162,7 @@ class MemeEditorViewController: UIViewController {
             MemeEditorViewInternal(
                 generateMemedImage: self.generateMemedImage,
                 onDismiss: self.onDismiss,
+                onShared: self.onShared,
                 meme: self.meme
             )
         )
@@ -203,12 +198,14 @@ class MemeEditorViewController: UIViewController {
 struct MemeEditorView: UIViewControllerRepresentable {
     @Binding var meme: MemeModel
     let onDismiss: () -> Void
+    let onShared: () -> Void
 
     func makeUIViewController(context: Context) -> MemeEditorViewController {
-        return MemeEditorViewController(
-            meme: $meme,
-            onDismiss: self.onDismiss
-        )
+        let controller = MemeEditorViewController()
+        controller.meme = $meme
+        controller.onShared = self.onShared
+        controller.onDismiss = self.onDismiss
+        return controller
     }
 
     func updateUIViewController(_ uiViewController: MemeEditorViewController, context: Context) {
@@ -219,7 +216,8 @@ struct MemeViewer_Previews: PreviewProvider {
     static var previews: some View {
         MemeEditorView(
             meme: .constant(MemeModel()),
-            onDismiss: {}
+            onDismiss: {},
+            onShared: {}
         )
     }
 }

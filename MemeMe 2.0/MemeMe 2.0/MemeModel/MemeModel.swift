@@ -9,8 +9,10 @@
 import SwiftUI
 
 
-struct MemeModel {
+struct MemeModel: Identifiable {
+    var id: String? = nil
     var topText: String = ""
     var bottomText: String = ""
     var image: Image? = nil
+    var memedImage: Image? = nil
 }

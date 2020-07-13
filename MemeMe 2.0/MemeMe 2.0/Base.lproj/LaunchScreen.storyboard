@@ -22,11 +22,19 @@
                                     <constraint firstAttribute="width" constant="100" id="WWr-Qw-zc4"/>
                                 </constraints>
                             </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MemeMe 2.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA6-qC-3GL">
+                                <rect key="frame" x="143.5" y="538" width="127.5" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="07O-eR-mXr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Qr-1v-Job"/>
+                            <constraint firstItem="PA6-qC-3GL" firstAttribute="top" secondItem="07O-eR-mXr" secondAttribute="bottom" constant="40" id="FDF-wD-9gg"/>
                             <constraint firstItem="07O-eR-mXr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ejx-10-dmw"/>
+                            <constraint firstItem="PA6-qC-3GL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ppX-fw-FrM"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
