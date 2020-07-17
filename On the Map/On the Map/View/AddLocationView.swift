@@ -98,7 +98,9 @@ struct AddLocationView: View {
     }
     
     func findLocation() {
+        isLoading = true
         CLGeocoder().geocodeAddressString(self.mapString) { placeMark, error in
+            self.isLoading = false
             guard let placeMark = placeMark else {
                 print(error!) // TODO: send to log
                 self.alert = AlertContent(title: "Cannot find the location", message: "Please double check the location you entered.")
