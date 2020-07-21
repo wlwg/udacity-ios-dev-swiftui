@@ -18,96 +18,96 @@ struct AudioPlayView: View {
     }
     
     var body: some View {
-        VStack {
+        ScrollView {
             VStack {
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.audioPlayer.playSound(rate: 0.5)
-                    }) {
-                        Image("Slow")
-                            .renderingMode(.original)
+                VStack(spacing: 30) {
+                    HStack {
+                        Spacer()
+        
+                        Button(action: {
+                            self.audioPlayer.playSound(rate: 0.5)
+                        }) {
+                            Image("Slow")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+
+                        Spacer()
+
+                        Button(action: {
+                            self.audioPlayer.playSound(rate: 1.5)
+                        }) {
+                            Image("Fast")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+
+                        Spacer()
                     }
-                    .disabled(audioPlayer.playing)
 
-                    Spacer()
-
-                    Button(action: {
-                        self.audioPlayer.playSound(rate: 1.5)
-                    }) {
-                        Image("Fast")
-                            .renderingMode(.original)
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            self.audioPlayer.playSound(pitch: 1000)
+                        }) {
+                            Image("HighPitch")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.audioPlayer.playSound(pitch: -1000)
+                        }) {
+                            Image("LowPitch")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+                        
+                        Spacer()
                     }
-                    .disabled(audioPlayer.playing)
 
-                    Spacer()
+                    HStack {
+                        Spacer()
+                        
+                        Button(action: {
+                            self.audioPlayer.playSound(echo: true)
+                        }) {
+                            Image("Echo")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+                        
+                        Spacer()
+                        
+                        Button(action: {
+                            self.audioPlayer.playSound(reverb: true)
+                        }) {
+                            Image("Reverb")
+                                .renderingMode(.original)
+                        }
+                        .disabled(audioPlayer.playing)
+                        
+                        Spacer()
+                    }
                 }
-                
-                Spacer()
 
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.audioPlayer.playSound(pitch: 1000)
-                    }) {
-                        Image("HighPitch")
-                            .renderingMode(.original)
-                    }
-                    .disabled(audioPlayer.playing)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.audioPlayer.playSound(pitch: -1000)
-                    }) {
-                        Image("LowPitch")
-                            .renderingMode(.original)
-                    }
-                    .disabled(audioPlayer.playing)
-                    
-                    Spacer()
+                Button(action: {
+                    self.audioPlayer.stopAudio()
+                }) {
+                    Image("Stop")
+                        .renderingMode(.original)
+                        .resizable()
+                        .frame(width: 64, height: 64)
+                        .opacity(audioPlayer.playing ? 1 : 0.5)
                 }
-                Spacer()
-
-                HStack {
-                    Spacer()
-                    
-                    Button(action: {
-                        self.audioPlayer.playSound(echo: true)
-                    }) {
-                        Image("Echo")
-                            .renderingMode(.original)
-                    }
-                    .disabled(audioPlayer.playing)
-                    
-                    Spacer()
-                    
-                    Button(action: {
-                        self.audioPlayer.playSound(reverb: true)
-                    }) {
-                        Image("Reverb")
-                            .renderingMode(.original)
-                    }
-                    .disabled(audioPlayer.playing)
-                    
-                    Spacer()
-                }
+                .disabled(!audioPlayer.playing)
+                .padding(.top, 40)
             }
-
-            Button(action: {
-                self.audioPlayer.stopAudio()
-            }) {
-                Image("Stop")
-                    .renderingMode(.original)
-                    .resizable()
-                    .frame(width: 64, height: 64)
-                    .opacity(audioPlayer.playing ? 1 : 0.5)
-            }
-            .disabled(!audioPlayer.playing)
-            
-            Spacer()
+            .padding(.top, 20)
+            .padding(.bottom, 20)
         }
         .alert(isPresented: .constant(showAlert)) {
             Alert(
@@ -124,6 +124,6 @@ struct AudioPlayView: View {
 
 struct PlaySoundsView_Previews: PreviewProvider {
     static var previews: some View {
-        AudioPlayView(audioURL: URL(string: "this is URL"))
+        AudioPlayView(audioURL: URL(string: "https://google.com"))
     }
 }

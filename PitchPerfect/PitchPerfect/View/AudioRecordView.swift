@@ -20,8 +20,7 @@ struct AudioRecordView: View {
         NavigationView {
             VStack {
                 Spacer()
-                .frame(maxWidth: .infinity,
-                       maxHeight: .infinity)
+                    .frame(height: 60)
 
                 VStack {
                     Button(action: {
@@ -35,8 +34,6 @@ struct AudioRecordView: View {
 
                     Text(audioRecorder.recording ? "Recording in progress" : "Tap to Record")
                 }
-                .frame(maxWidth: .infinity,
-                       maxHeight: .infinity)
        
 
                 NavigationLink(
@@ -56,9 +53,6 @@ struct AudioRecordView: View {
                             .opacity(audioRecorder.recording ? 1 : 0.5)
                     }
                     .disabled(!audioRecorder.recording)
-                    .frame(maxWidth: .infinity,
-                           maxHeight: .infinity,
-                           alignment: .top)
                 }
             }
         }
