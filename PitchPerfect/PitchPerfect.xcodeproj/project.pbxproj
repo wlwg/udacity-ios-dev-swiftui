@@ -64,13 +64,10 @@
 		32C2004D24B3EC0700E4B7A2 /* PitchPerfect */ = {
 			isa = PBXGroup;
 			children = (
+				32DC443F24C674740008CA50 /* Service */,
+				32DC443E24C6746D0008CA50 /* View */,
 				32C2004E24B3EC0700E4B7A2 /* AppDelegate.swift */,
 				32C2005024B3EC0700E4B7A2 /* SceneDelegate.swift */,
-				32E46B2D24B5506D00B0ECE1 /* AudioRecorder.swift */,
-				32C2005224B3EC0700E4B7A2 /* AudioRecordView.swift */,
-				32E46B2F24B5818900B0ECE1 /* AudioPlayer.swift */,
-				32E46B2924B541E700B0ECE1 /* AudioPlayView.swift */,
-				32E46B3124B5A2E700B0ECE1 /* AlertContent.swift */,
 				32C2005424B3EC0800E4B7A2 /* Assets.xcassets */,
 				32C2005924B3EC0800E4B7A2 /* LaunchScreen.storyboard */,
 				32C2005C24B3EC0800E4B7A2 /* Info.plist */,
@@ -85,6 +82,25 @@
 				32C2005724B3EC0800E4B7A2 /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		32DC443E24C6746D0008CA50 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				32E46B3124B5A2E700B0ECE1 /* AlertContent.swift */,
+				32E46B2924B541E700B0ECE1 /* AudioPlayView.swift */,
+				32C2005224B3EC0700E4B7A2 /* AudioRecordView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		32DC443F24C674740008CA50 /* Service */ = {
+			isa = PBXGroup;
+			children = (
+				32E46B2F24B5818900B0ECE1 /* AudioPlayer.swift */,
+				32E46B2D24B5506D00B0ECE1 /* AudioRecorder.swift */,
+			);
+			path = Service;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

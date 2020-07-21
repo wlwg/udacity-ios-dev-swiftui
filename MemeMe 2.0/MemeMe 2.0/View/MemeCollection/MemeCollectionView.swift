@@ -34,7 +34,6 @@ class MemeCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: COLLECTION_CELL_REUSE_ID, for: indexPath)
         let meme = self.memes[(indexPath as NSIndexPath).row]
         self.addImageToCell(cell, image: meme.memedImage!)
-        cell.backgroundColor = UIColor.red
         return cell
     }
     

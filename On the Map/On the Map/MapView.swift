@@ -13,9 +13,7 @@ struct MapView: UIViewRepresentable {
     @EnvironmentObject var appState: AppState
     
     let onTapItem: (String?) -> Void
-    
-    let annotationViewReuseId = "MapAnnotationViewReuseId"
-    
+
     class Coordinator: NSObject, MKMapViewDelegate {
         static let AnnotationViewReuseId = "MapAnnotationViewReuseId"
 
