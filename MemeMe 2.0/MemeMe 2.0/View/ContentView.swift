@@ -26,8 +26,7 @@ struct ContentView: View {
                             Text("No Memes available.")
                         }
                     }.tabItem {
-                        Image("table")
-                            .scaledToFit()
+                        Image(systemName: "list.dash")
                     }
                     
                     VStack {
@@ -38,8 +37,7 @@ struct ContentView: View {
                             Text("No Memes available.")
                         }
                     }.tabItem {
-                        Image("collection")
-                            .scaledToFit()
+                        Image(systemName: "rectangle.grid.2x2")
                     }
                 }
                     .navigationBarTitle("Sent Memes", displayMode: .inline)

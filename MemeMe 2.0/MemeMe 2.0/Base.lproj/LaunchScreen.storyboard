@@ -15,26 +15,22 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="07O-eR-mXr">
-                                <rect key="frame" x="157" y="398" width="100" height="100"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="100" id="7Vd-AS-CqC"/>
-                                    <constraint firstAttribute="width" constant="100" id="WWr-Qw-zc4"/>
-                                </constraints>
-                            </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="MemeMe 2.0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA6-qC-3GL">
-                                <rect key="frame" x="143.5" y="538" width="127.5" height="26.5"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                <nil key="textColor"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PA6-qC-3GL">
+                                <rect key="frame" x="155" y="437.5" width="104.5" height="21.5"/>
+                                <attributedString key="attributedText">
+                                    <fragment content="MemeMe 2.0">
+                                        <attributes>
+                                            <font key="NSFont" size="18" name="Optima-Regular"/>
+                                        </attributes>
+                                    </fragment>
+                                </attributedString>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="07O-eR-mXr" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="5Qr-1v-Job"/>
-                            <constraint firstItem="PA6-qC-3GL" firstAttribute="top" secondItem="07O-eR-mXr" secondAttribute="bottom" constant="40" id="FDF-wD-9gg"/>
-                            <constraint firstItem="07O-eR-mXr" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="ejx-10-dmw"/>
-                            <constraint firstItem="PA6-qC-3GL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ppX-fw-FrM"/>
+                            <constraint firstItem="PA6-qC-3GL" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" id="0kE-CT-aat"/>
+                            <constraint firstItem="PA6-qC-3GL" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="oE9-ZP-xB4"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
@@ -44,7 +40,4 @@
             <point key="canvasLocation" x="52.173913043478265" y="375"/>
         </scene>
     </scenes>
-    <resources>
-        <image name="logo" width="180" height="180"/>
-    </resources>
 </document>
