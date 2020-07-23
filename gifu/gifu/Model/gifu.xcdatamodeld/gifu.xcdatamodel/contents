@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="16119" systemVersion="19F101" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="Gif" representedClassName="Gif" syncable="YES" codeGenerationType="category">
+        <attribute name="height" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="url" attributeType="String"/>
+        <attribute name="width" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="search" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Search" inverseName="gifs" inverseEntity="Search"/>
+        <relationship name="trending" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Trending" inverseName="gifs" inverseEntity="Trending"/>
+    </entity>
+    <entity name="Search" representedClassName="Search" syncable="YES" codeGenerationType="class">
+        <attribute name="keyword" attributeType="String"/>
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="gifs" toMany="YES" deletionRule="Cascade" destinationEntity="Gif" inverseName="search" inverseEntity="Gif"/>
+    </entity>
+    <entity name="Trending" representedClassName="Trending" syncable="YES" codeGenerationType="class">
+        <attribute name="updatedAt" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="gifs" toMany="YES" deletionRule="Cascade" destinationEntity="Gif" inverseName="trending" inverseEntity="Gif"/>
+    </entity>
+    <elements>
+        <element name="Gif" positionX="-631.71484375" positionY="1847.3515625" width="128" height="133"/>
+        <element name="Search" positionX="-867.0390625" positionY="1955.12109375" width="128" height="88"/>
+        <element name="Trending" positionX="-865.875" positionY="1800.23828125" width="128" height="73"/>
+    </elements>
+</model>
