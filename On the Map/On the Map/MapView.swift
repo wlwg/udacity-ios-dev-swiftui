@@ -56,6 +56,8 @@ struct MapView: UIViewRepresentable {
     }
     
     func updateUIView(_ uiView: MKMapView, context: Context) {
+        uiView.removeAnnotations(uiView.annotations)
+
         var annotations = [MKPointAnnotation]()
         let locations: [StudentLocation] = appState.studentLocations
         for location in locations {
