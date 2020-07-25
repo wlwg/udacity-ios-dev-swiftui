@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3259557824CBC67000543917 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3259557724CBC67000543917 /* MapView.swift */; };
 		3272682224BF78AA0037C95F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272682124BF78AA0037C95F /* AppDelegate.swift */; };
 		3272682424BF78AA0037C95F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272682324BF78AA0037C95F /* SceneDelegate.swift */; };
 		3272682624BF78AA0037C95F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272682524BF78AA0037C95F /* ContentView.swift */; };
@@ -25,7 +26,6 @@
 		3272685224C0206F0037C95F /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685124C0206F0037C95F /* User.swift */; };
 		3272685424C0216C0037C95F /* UserInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685324C0216C0037C95F /* UserInterface.swift */; };
 		3272685624C035B90037C95F /* StudentLocactionsInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685524C035B90037C95F /* StudentLocactionsInterface.swift */; };
-		3272685824C1285E0037C95F /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685724C1285E0037C95F /* MapView.swift */; };
 		3272685B24C133F10037C95F /* AddLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685A24C133F10037C95F /* AddLocationView.swift */; };
 		3272685D24C13D680037C95F /* SingleLocationMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685C24C13D680037C95F /* SingleLocationMapView.swift */; };
 		3272685F24C149B40037C95F /* AddLocationPreviewView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3272685E24C149B40037C95F /* AddLocationPreviewView.swift */; };
@@ -33,6 +33,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3259557724CBC67000543917 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = "/Users/wwang/Dev/udacity-ios-dev-swiftui/On the Map/On the Map/View/MapView.swift"; sourceTree = "<absolute>"; };
 		3272681E24BF78A90037C95F /* On the Map.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "On the Map.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		3272682124BF78AA0037C95F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		3272682324BF78AA0037C95F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -53,7 +54,6 @@
 		3272685124C0206F0037C95F /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		3272685324C0216C0037C95F /* UserInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserInterface.swift; sourceTree = "<group>"; };
 		3272685524C035B90037C95F /* StudentLocactionsInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudentLocactionsInterface.swift; sourceTree = "<group>"; };
-		3272685724C1285E0037C95F /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MapView.swift; path = "/Users/wwang/Dev/uda/On the Map/On the Map/MapView.swift"; sourceTree = "<absolute>"; };
 		3272685A24C133F10037C95F /* AddLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationView.swift; sourceTree = "<group>"; };
 		3272685C24C13D680037C95F /* SingleLocationMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SingleLocationMapView.swift; sourceTree = "<group>"; };
 		3272685E24C149B40037C95F /* AddLocationPreviewView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddLocationPreviewView.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 				32DC444224C675450008CA50 /* AddLocation */,
 				3272682524BF78AA0037C95F /* ContentView.swift */,
 				3272683D24BFCDFF0037C95F /* LoginView.swift */,
-				3272685724C1285E0037C95F /* MapView.swift */,
+				3259557724CBC67000543917 /* MapView.swift */,
 				3272683B24BF9B8C0037C95F /* ListView.swift */,
 			);
 			path = View;
@@ -263,7 +263,6 @@
 				3272684C24BFFE0A0037C95F /* AlertContent.swift in Sources */,
 				3272684E24BFFF730037C95F /* AppState.swift in Sources */,
 				3272682424BF78AA0037C95F /* SceneDelegate.swift in Sources */,
-				3272685824C1285E0037C95F /* MapView.swift in Sources */,
 				3272683E24BFCDFF0037C95F /* LoginView.swift in Sources */,
 				3272682624BF78AA0037C95F /* ContentView.swift in Sources */,
 				3272686124C1774B0037C95F /* LoadingView.swift in Sources */,
@@ -271,6 +270,7 @@
 				3272685B24C133F10037C95F /* AddLocationView.swift in Sources */,
 				3272685224C0206F0037C95F /* User.swift in Sources */,
 				3272685624C035B90037C95F /* StudentLocactionsInterface.swift in Sources */,
+				3259557824CBC67000543917 /* MapView.swift in Sources */,
 				3272685424C0216C0037C95F /* UserInterface.swift in Sources */,
 				3272684824BFF52A0037C95F /* AuthInterface.swift in Sources */,
 			);
