@@ -21,7 +21,7 @@ The second version of the MemeMe app that can not only generate Memes as in the 
 ![](demo/mememe-2.gif)
 
 ### On the Map
-An app that shows posts from all other users in either a map view or a table view. The map view shows each post as a pin based on its geo-location. By tapping on the pin, the poster's name and URL will show in the callout view. Clicking on the callout view opens that URL in the browser. Of course the user is also able to post their own information (address and URL). The app can reverse-geocode the address string to a location, and show the post on the map view and the table view.
+Udacity students need to log into the app using their Udaicty username and password. The app shows posts from all other students in either a map view or a table view. The map view shows each post as a pin based on its geo-location. By tapping on the pin, the poster's name and URL will show in the callout view. Clicking on the callout view opens that URL in the browser. Of course the student is also able to post their own information (address and URL). The app can reverse-geocode the address string to a location, and show the post on the map view and the table view.
 
 ![](demo/on-the-map.gif)
 
